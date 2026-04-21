@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap');
+@import "tailwindcss";
+
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+/* ─── Tailwind Theme Extension ─────────────────────────────────────────────── */
+@theme {
+  --color-void: #050505;
+  --color-sage: #7ea87a;
+  --color-sage-glow: rgba(126, 168, 122, 0.5);
+  --color-gold: #c9a96e;
+  --font-sans: 'Inter', -apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --void: #050505;
+  --white-90: rgba(255, 255, 255, 0.90);
+  --white-60: rgba(255, 255, 255, 0.60);
+  --white-30: rgba(255, 255, 255, 0.30);
+  --white-10: rgba(255, 255, 255, 0.10);
+  --sage: #7ea87a;
+  --sage-glow: rgba(126, 168, 122, 0.5);
+  --gold: #c9a96e;
+  --font: 'Inter', -apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif;
+  --ease-expo: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ─── Base overrides ───────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: var(--font);
+    background: var(--void);
+    color: var(--white-90);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--void);
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--sage);
+    color: var(--void);
+  }
+}
+
+/* ─── Utils ─────────────────────────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.font-main {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.04em;
+}
+
+/* ─── Scroll Container ──────────────────────────────────────────────────────── */
+.scroll-container {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+  background: var(--void);
+}
+
+.scroll-container::-webkit-scrollbar { display: none; }
+.scroll-container { scrollbar-width: none; }
+
+/* ─── Sticky Wrap + Inner ───────────────────────────────────────────────────── */
+.sticky-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.sticky-inner {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--void);
+}
+
+/* ─── Film Canvas ────────────────────────────────────────────────────────────── */
+.film-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: luminosity;
+  filter: brightness(1.08) contrast(1.05);
+}
+
+/* ─── Vignette ───────────────────────────────────────────────────────────────── */
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 30%,
+    rgba(5, 5, 5, 0.55) 70%,
+    rgba(5, 5, 5, 0.92) 100%
+  );
+  z-index: 2;
+}
+
+/* ─── Noise overlay ──────────────────────────────────────────────────────────── */
+.noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  z-index: 3;
+}
+
+/* ─── Glow Pulse ─────────────────────────────────────────────────────────────── */
+.glow-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sage-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 4;
+  transition: opacity 0.1s ease, transform 0.1s ease;
+  animation: glowBreath 2.4s ease-in-out infinite;
+}
+
+@keyframes glowBreath {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* ─── Navbar ─────────────────────────────────────────────────────────────────── */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 48px;
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--white-10);
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: var(--white-90);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white-60);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.nav-link:hover { color: var(--white-90); }
+
+.nav-cta {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid var(--white-30);
+  background: transparent;
+  color: var(--white-90);
+  cursor: pointer;
+  transition: all 0.28s ease;
+  border-radius: 4px;
+}
+.nav-cta:hover {
+  background: var(--white-90);
+  color: var(--void);
+}
+
+/* ─── Beat Overlay ───────────────────────────────────────────────────────────── */
+.beat-overlay {
+  position: absolute;
+  bottom: 14%;
+  left: 7%;
+  max-width: 620px;
+  z-index: 20;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.beat-accent {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 14px;
+}
+
+.beat-title {
+  font-size: clamp(3.4rem, 8vw, 7.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--white-90);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.beat-title-line {
+  display: inline;
+}
+
+.beat-subtitle {
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  font-weight: 300;
+  color: var(--white-60);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  max-width: 440px;
+}
+
+/* ─── Scroll Indicator ───────────────────────────────────────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 36px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 30;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--white-60));
+}
+
+.scroll-label {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--white-60);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ─── Progress Dots ──────────────────────────────────────────────────────────── */
+.progress-dots {
+  position: absolute;
+  right: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 40;
+}
+
+.progress-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--white-30);
+  transition: all 0.4s ease;
+}
+
+.progress-dot.active {
+  background: var(--sage);
+  box-shadow: 0 0 8px var(--sage-glow);
+  transform: scale(1.6);
+}
+
+/* ─── Loader ─────────────────────────────────────────────────────────────────── */
+.kin-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  gap: 12px;
+}
+
+.loader-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+.loader-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loader-brand {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: var(--white-90);
+  text-transform: uppercase;
+}
+
+.loader-tagline {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white-60);
+  margin-bottom: 32px;
+}
+
+.loader-bar-wrap {
+  width: 200px;
+  height: 1px;
+  background: var(--white-10);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--sage), white);
+  border-radius: 100px;
+  transition: width 0.08s linear;
+}
+
+.loader-pct {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--white-30);
+  margin-top: 8px;
+}
+
+/* ─── Final CTA Section ──────────────────────────────────────────────────────── */
+.final-cta {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, var(--void) 0%, #0a0f0a 100%);
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(126, 168, 122, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-inner {
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 700px;
+}
+
+.cta-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+}
+
+.cta-heading {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  color: var(--white-90);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.cta-body {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  color: var(--white-60);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 15px 40px;
+  background: var(--sage);
+  color: var(--void);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(126, 168, 122, 0.3);
+}
+
+.btn-ghost {
+  padding: 15px 40px;
+  background: transparent;
+  color: var(--white-90);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--white-30);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--white-60);
+  background: var(--white-10);
+  transform: translateY(-2px);
+}
+
+.cta-badges {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-60);
+  padding: 6px 14px;
+  border: 1px solid var(--white-10);
+  border-radius: 100px;
+  background: var(--white-10);
+  backdrop-filter: blur(6px);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--void);
+  border-top: 1px solid var(--white-10);
+  text-align: center;
+  padding: 56px 24px;
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: var(--white-90);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--white-60);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.footer-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white-60);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.footer-links a:hover { color: var(--white-90); }
+
+.footer-copy {
+  font-size: 0.62rem;
+  color: var(--white-30);
+  letter-spacing: 0.1em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .beat-overlay { left: 5%; bottom: 10%; max-width: 92vw; }
+  .scroll-indicator { right: 24px; }
+  .progress-dots { display: none; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-ghost { width: 100%; max-width: 280px; }
+}
