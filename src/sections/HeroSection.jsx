@@ -10,23 +10,29 @@ export default function HeroSection() {
     const timer = setTimeout(() => setLoaded(true), 150);
     
     let rafId;
+    let currentScrollY = window.scrollY;
+
     const updateScroll = () => {
-      const scrollY = window.scrollY;
+      // Lerp (Linear Interpolation) for buttery smooth animation
+      currentScrollY += (window.scrollY - currentScrollY) * 0.08;
+      const scrollY = currentScrollY;
       
       if (scrollWrapperRef.current) {
         const scale = Math.max(0.94, 1 - scrollY * 0.0003);
-        scrollWrapperRef.current.style.transform = `scale(${scale})`;
+        // translate3d forces hardware acceleration
+        scrollWrapperRef.current.style.transform = `translate3d(0, 0, 0) scale(${scale})`;
       }
       
       if (imageRef.current) {
-        imageRef.current.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
+        // Translate UP (negative scrollY) for correct parallax, requiring much less scale!
+        imageRef.current.style.transform = `translate3d(0, ${scrollY * -0.1}px, 0) scale(1.05)`;
       }
 
       if (overlayRef.current) {
         const opacity = Math.max(0, 1 - scrollY * 0.002);
         const yPos = scrollY * -0.6;
         overlayRef.current.style.opacity = opacity;
-        overlayRef.current.style.transform = `translateY(${yPos}px)`;
+        overlayRef.current.style.transform = `translate3d(0, ${yPos}px, 0)`;
       }
       
       rafId = requestAnimationFrame(updateScroll);
@@ -54,7 +60,7 @@ export default function HeroSection() {
         className="fixed top-0 left-0 w-full h-[100dvh] p-4 md:p-6 z-0 origin-center transition-opacity duration-1000"
         style={{ opacity: loaded ? 1 : 0 }}
       >
-        <div className="relative w-full h-full overflow-hidden rounded-[30px] md:rounded-[50px] bg-[#000] shadow-2xl">
+        <div className="relative w-full h-full overflow-hidden rounded-[30px] md:rounded-[50px] bg-[#e5e5e0] shadow-2xl">
           
           {/* BACKGROUND IMAGE WITH FIXED VISIBILITY */}
           <div className="absolute inset-0 z-0">
