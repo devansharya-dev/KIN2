@@ -1,57 +1,93 @@
-// src/components/Navbar.jsx
-import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
 
-export default function Navbar({ scrollProgress }) {
-  const isScrolled = scrollProgress > 0.03;
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const scrollToSection = (e, id) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(id);
-    const scrollContainer = document.querySelector('.scroll-container');
-    
-    if (targetElement && scrollContainer) {
-      // Calculate taking into account the parent elements position within scroll-container vs global window
-      const containerRect = scrollContainer.getBoundingClientRect();
-      const targetRect = targetElement.getBoundingClientRect();
-      
-      scrollContainer.scrollTo({
-        top: scrollContainer.scrollTop + targetRect.top - containerRect.top,
-        behavior: 'smooth'
-      });
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-      // Update URL without triggering default jump
-      window.history.pushState(null, '', `#${id}`);
-    }
-  };
+  const navLinks = [
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact' }
+  ];
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-[100] px-8 md:px-20 py-10 flex justify-between items-center transition-all duration-700">
-      
-      {/* 1. LOGO: KIN (Pure & Bold) */}
-      <div className="text-[16px] font-black tracking-[0.3em] uppercase">
-        KIN<span className="text-[#bef32e]">.</span>
-      </div>
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 md:px-12 lg:px-20 h-[90px] transition-all duration-500 ${
+          scrolled && !isOpen ? 'bg-[#F2F3EC]/90 backdrop-blur-md border-b border-black/5' : 'bg-[#F2F3EC]'
+        }`}
+      >
+        {/* Brand Logo - Kin® */}
+        <div className="flex items-start cursor-pointer hover:opacity-60 transition-opacity z-[110]">
+          <h1 className="text-[22px] md:text-[24px] font-bold tracking-tighter text-[#0C0C0C] font-['Inter']">
+            Kin
+          </h1>
+          <span className="text-[10px] font-bold mt-1.5 ml-0.5 text-[#0C0C0C]">®</span>
+        </div>
 
-      {/* 2. CENTER LINKS: PURE VISUALS STYLE */}
-      <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-14 text-[10px] uppercase tracking-[0.4em] font-medium text-white/40">
-        <a href="#story" onClick={(e) => scrollToSection(e, 'story')} className="hover:text-white transition-colors duration-500">Story</a>
-        <a href="#ingredients" onClick={(e) => scrollToSection(e, 'ingredients')} className="hover:text-white transition-colors duration-500">Ingredients</a>
-        {/* <a href="#shop" onClick={(e) => scrollToSection(e, 'shop')} className="hover:text-white transition-colors duration-500">Shop</a> */}
-      </div>
+        {/* Desktop Nav Items - Just 3 Items */}
+        <div className="hidden md:flex items-center gap-12 lg:gap-16">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="relative group py-2"
+            >
+              <span className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#0C0C0C] font-['Inter']">
+                {link.name}
+              </span>
+              {/* Bottom Line Animation */}
+              <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+            </a>
+          ))}
+        </div>
 
-      {/* 3. RIGHT SIDE: MINIMAL FOOTER LINK */}
-      <div className="flex items-center">
-        <a 
-          href="#contact" 
-          onClick={(e) => scrollToSection(e, 'contact')}
-          className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-60 hover:opacity-100 hover:text-[#bef32e] transition-all duration-500"
+        {/* Hamburger Toggle - Fully Functional */}
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-2 outline-none group"
         >
-          Contact —
-        </a>
-      </div>
+          <div className={`h-[1.5px] bg-black transition-all duration-500 ease-in-out ${
+            isOpen ? 'w-8 rotate-45 translate-y-[4.75px]' : 'w-8 md:w-10'
+          }`} />
+          <div className={`h-[1.5px] bg-black transition-all duration-500 ease-in-out ${
+            isOpen ? 'w-8 -rotate-45 -translate-y-[4.75px]' : 'w-8 md:w-10'
+          }`} />
+        </button>
 
-      {/* SUBTLE BACKGROUND (Only on Scroll) */}
-      <div className={`absolute inset-0 -z-10 bg-black/20 backdrop-blur-sm transition-opacity duration-1000 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
-    </nav>
+      </nav>
+
+      {/* Fullscreen Mobile Menu Reveal */}
+      <div className={`fixed inset-0 bg-[#F2F3EC] z-[90] flex flex-col justify-center items-center transition-all duration-700 ease-[cubic-bezier(0.2,1,0.2,1)] ${
+        isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+      }`}>
+        <div className="flex flex-col items-center gap-10">
+          {navLinks.map((item, idx) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className={`font-['Syne'] text-[50px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic ${
+                isOpen ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+              }`}
+              style={{ transitionDelay: `${idx * 150}ms` }}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+        
+        {/* Mobile Menu Bottom Detail */}
+        <div className={`absolute bottom-12 text-center transition-opacity duration-1000 ${isOpen ? 'opacity-30' : 'opacity-0'}`}>
+          <p className="font-['Inter'] text-[10px] font-black uppercase tracking-[0.4em]">Pure Fungi Synergy / 2026</p>
+        </div>
+      </div>
+    </>
   );
 }

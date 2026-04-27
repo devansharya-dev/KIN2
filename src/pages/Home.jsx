@@ -1,21 +1,45 @@
-import HeroCanvas from '../sections/HeroCanvas';
-import StorySection from '../sections/StorySection';
-import IngredientsSection from '../sections/IngredientsSection';
-import ExperienceSection from '../sections/ExperienceSection';
-import FinalCTA from '../sections/FinalCTA';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import Navbar from '../components/Navbar';
+import HeroSection from '../sections/HeroSection';
+import ProductSection from '../sections/ProductSection';
+import ParallaxSection from '../sections/ParallaxSection';
+import GridSection from '../sections/GridSection';
+import CTASection from '../sections/CTASection';
 import Footer from '../sections/Footer';
-import ProductHighlightSection from '../sections/ProductHighlightSection';
-import WaysToMix from '../sections/WaysToMix';
+
 export default function Home() {
+  useEffect(() => {
+    // Initialize Lenis for Buttery Smooth Scrolling (Apple-like feel)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      smooth: true,
+      smoothTouch: false, // Mobile pe native touch scroll better feel deta hai
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <HeroCanvas>
-      <StorySection />
-      <ProductHighlightSection />
-      <IngredientsSection />
-      <WaysToMix />
-      <ExperienceSection />
-      <FinalCTA />
+    // Background dark kar diya taaki premium black theme ke sath white flashes na aayein
+    <div className="page-root bg-[var(--color-bg)] text-[var(--color-text)] min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <ProductSection />
+      <ParallaxSection />
+      <GridSection />
+      <CTASection />
       <Footer />
-    </HeroCanvas>
+    </div>
   );
 }

@@ -10,7 +10,7 @@ export default function Loader({ progress }) {
       {progress < 100 && (
         <motion.div
           key="loader"
-          className="fixed inset-0 z-[9999] bg-[#050505] flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-[var(--color-primary)] flex items-center justify-center overflow-hidden"
           initial={{ y: 0 }}
           exit={{ 
             y: "-100%", 
@@ -26,7 +26,7 @@ export default function Loader({ progress }) {
           <div className="relative flex flex-col items-center">
             <div className="overflow-hidden h-[110px] md:h-[160px]">
               <motion.span 
-                className="text-white text-[30vw] md:text-[18vw] font-bold leading-none block"
+                className="text-[var(--color-surface)] text-[30vw] md:text-[18vw] font-bold leading-none block"
                 style={{ fontFamily: interFont, letterSpacing: "-0.05em" }}
               >
                 {Math.round(progress)}
@@ -34,25 +34,25 @@ export default function Loader({ progress }) {
             </div>
             
             {/* Speed Line */}
-            <div className="w-[40vw] max-w-[150px] h-[3px] bg-white/10 mt-2 overflow-hidden">
+            <div className="w-[40vw] max-w-[150px] h-[3px] bg-[var(--color-surface)]/20 mt-2 overflow-hidden">
               <motion.div 
-                className="h-full bg-white"
+                className="h-full bg-[var(--color-accent)]"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ ease: "easeOut", duration: 0.1 }}
               />
             </div>
 
-            <div className="mt-8 text-[10px] uppercase tracking-[0.8em] text-white/20 font-medium">
+            <div className="mt-8 text-[10px] uppercase tracking-[0.8em] text-[var(--color-surface)]/50 font-medium">
               Initializing
             </div>
           </div>
 
           {/* Side Accents (To fill space without slowing down) */}
-          <div className="absolute bottom-10 left-10 opacity-20 text-[9px] font-mono tracking-widest text-white">
+          <div className="absolute bottom-10 left-10 opacity-20 text-[9px] font-mono tracking-widest text-[var(--color-surface)]">
             KIN // V1.0
           </div>
-          <div className="absolute bottom-10 right-10 opacity-20 text-[9px] font-mono tracking-widest text-white">
+          <div className="absolute bottom-10 right-10 opacity-20 text-[9px] font-mono tracking-widest text-[var(--color-surface)]">
             {new Date().getFullYear()}
           </div>
         </motion.div>
