@@ -1,13 +1,9 @@
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-[#F2F3EC] py-16 px-6 md:px-16 border-t border-black/10 overflow-hidden font-body" id="contact">
+    <footer className="relative w-full bg-[var(--color-bg)] py-16 px-6 md:px-16 border-t border-black/10 overflow-hidden font-body" id="contact">
       
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Space+Grotesk:wght@300;500;700&display=swap');
-        .font-heading { font-family: 'Syne', sans-serif; }
-        .font-body { font-family: 'Space Grotesk', sans-serif; }
-      `}</style>
+
 
       <div className="max-w-[1800px] mx-auto">
         
@@ -17,7 +13,7 @@ export default function Footer() {
           {/* Left: Branding (Capital K) */}
           <div className="lg:col-span-6">
             <h2 className="font-heading text-[12vw] lg:text-[120px] leading-[0.8] tracking-[-0.06em] text-[#0C0C0C]">
-              Kin<span className="opacity-10 italic">.</span>
+              KIN<span className="opacity-10 italic">.</span>
             </h2>
             <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.6em] text-black/20 max-w-[280px]">
               Molecular Synergy / 2026
@@ -88,7 +84,7 @@ export default function Footer() {
 
       {/* Background Graphic */}
       <div className="absolute -bottom-10 -right-10 font-heading text-[25vw] text-black/[0.01] pointer-events-none select-none uppercase">
-        Kin
+        KIN
       </div>
     </footer>
   );

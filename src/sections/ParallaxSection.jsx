@@ -7,12 +7,7 @@ export default function ParallaxSection() {
   return (
     <section className="relative w-full h-[150vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a] font-body">
       
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Playfair+Display:italic,wght@400;600&display=swap');
-        .font-heading { font-family: 'Syne', sans-serif; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-body { font-family: 'Inter', sans-serif; }
-      `}</style>
+
 
       {/* --- BACKGROUND (Images Same) --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden" ref={bgRef}>

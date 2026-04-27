@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
+
+@layer utilities {
+  .text-outline-dark {
+    -webkit-text-stroke: 1px rgba(12, 12, 12, 0.2);
+    color: transparent;
+  }
+  .font-heading { font-family: 'Syne', sans-serif; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+  .font-body { font-family: 'Space Grotesk', sans-serif; }
+}
 
 :root {
   --color-primary: #1F3D2B;

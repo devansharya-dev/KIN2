@@ -31,7 +31,6 @@ export default function Home() {
   }, []);
 
   return (
-    // Darkened background to prevent white flashes with the premium black theme
     <div className="page-root w-full overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)] min-h-screen">
       <Navbar />
       <HeroSection />

@@ -4,7 +4,7 @@ export default function KinProductSection() {
   const { ref: imgRef, y: imgY, scale: imgScale } = useParallax({ speed: 0.1, scale: 0.02 });
 
   return (
-    <section id="about" className="bg-[var(--color-bg)] py-24 md:py-40 px-6 md:px-12 lg:px-20 font-['Inter'] antialiased overflow-hidden">
+    <section id="about" className="bg-[var(--color-bg)] py-24 md:py-40 px-6 md:px-12 lg:px-20 font-body antialiased overflow-hidden">
       
       <div className="max-w-[1440px] mx-auto">
         
@@ -25,7 +25,7 @@ export default function KinProductSection() {
           
           {/* Kin Brand Heading */}
           <div className="lg:col-span-9">
-            <h2 className="text-[44px] md:text-[72px] lg:text-[92px] font-semibold tracking-[-0.05em] leading-[1] text-[var(--color-text)] max-w-[1100px]">
+            <h2 className="text-[44px] md:text-[72px] lg:text-[92px] font-semibold tracking-[-0.05em] leading-[1] text-[var(--color-text)] max-w-[1100px] lowercase">
               All bliss, no booze. <br className="hidden md:block" />
               <span className="text-[var(--color-text-muted)]">Experience the lift without <br className="hidden md:block" /> the morning letdown.</span>
             </h2>

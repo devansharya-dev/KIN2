@@ -22,19 +22,10 @@ export default function CTASection() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-[160vh] bg-[#F2F3EC] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[160vh] bg-[var(--color-bg)] flex items-center justify-center overflow-hidden"
     >
       
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Playfair+Display:italic,wght@400&display=swap');
-        .font-heading { font-family: 'Syne', sans-serif; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-body { font-family: 'Inter', sans-serif; }
-        .text-outline-dark {
-          -webkit-text-stroke: 1px rgba(12, 12, 12, 0.15);
-          color: transparent;
-        }
-      `}</style>
+
 
       {/* --- BACKGROUND ARCHITECTURE (Empty space filler) --- */}
       <div className="absolute inset-0 flex justify-around px-20 opacity-[0.03] pointer-events-none">

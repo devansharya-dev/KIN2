@@ -42,12 +42,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-[140vh] w-full bg-[#f4f4f2] overflow-hidden font-body">
       
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Playfair+Display:italic,wght@400&family=Space+Grotesk:wght@300;400&display=swap');
-        .font-heading { font-family: 'Syne', sans-serif; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-body { font-family: 'Space Grotesk', sans-serif; }
-      `}</style>
+
       
       <div 
         ref={scrollWrapperRef}
@@ -79,8 +74,8 @@ export default function HeroSection() {
 
               {/* Distilled Logo */}
               <div className="relative">
-                <h1 className="font-heading text-[22vw] md:text-[180px] tracking-[-0.08em] leading-[0.75] uppercase flex items-center drop-shadow-xl">
-                  Kin<span className="text-[0.35em] font-serif italic lowercase opacity-30 tracking-tight ml-2">ship</span>
+                <h1 className="font-heading text-[22vw] md:text-[180px] tracking-[-0.08em] leading-[0.75] flex items-center drop-shadow-xl">
+                  KIN<span className="text-[0.35em] font-serif italic lowercase opacity-30 tracking-tight ml-2">ship.</span>
                 </h1>
               </div>
 

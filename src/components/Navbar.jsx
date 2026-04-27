@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* Brand Logo - Kin® */}
         <div className="flex items-start cursor-pointer hover:opacity-60 transition-opacity z-[110]">
           <h1 className="text-[22px] md:text-[24px] font-bold tracking-tighter text-[#0C0C0C] font-['Inter']">
-            Kin
+            KIN
           </h1>
          
         </div>
@@ -39,7 +39,7 @@ export default function Navbar() {
               href={link.href}
               className="relative group py-2"
             >
-              <span className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#0C0C0C] font-['Inter']">
+              <span className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#0C0C0C] font-body">
                 {link.name}
               </span>
               {/* Bottom Line Animation */}
@@ -73,7 +73,7 @@ export default function Navbar() {
               key={item.name}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`font-['Syne'] text-[50px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic ${
+              className={`font-heading text-[50px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic ${
                 isOpen ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: `${idx * 150}ms` }}
@@ -85,7 +85,7 @@ export default function Navbar() {
         
         {/* Mobile Menu Bottom Detail */}
         <div className={`absolute bottom-12 text-center transition-opacity duration-1000 ${isOpen ? 'opacity-30' : 'opacity-0'}`}>
-          <p className="font-['Inter'] text-[10px] font-black uppercase tracking-[0.4em]">Pure Fungi Synergy / 2026</p>
+          <p className="font-body text-[10px] font-black uppercase tracking-[0.4em]">Pure Fungi Synergy / 2026</p>
         </div>
       </div>
     </>
