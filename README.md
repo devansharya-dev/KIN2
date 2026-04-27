@@ -59,7 +59,7 @@ graph TD
     C --> I[CTASection.jsx]
     C --> J[Footer.jsx]
     
-    subgraph Core Features
+    subgraph Features[Core Features]
         D
         E
         F
@@ -69,11 +69,14 @@ graph TD
         J
     end
     
-    subgraph Utilities & Hooks
-        K[useParallax.js] -.-> G
-        K -.-> F
-        L[index.css] -.-> Core Features
+    subgraph Utils[Utilities & Hooks]
+        K[useParallax.js]
+        L[index.css]
     end
+    
+    K -.-> G
+    K -.-> F
+    L -.-> C
 ```
 
 ---

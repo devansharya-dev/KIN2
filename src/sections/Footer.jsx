@@ -66,10 +66,7 @@ export default function Footer() {
         {/* --- MINIMAL SIGNATURE BAR --- */}
         <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
           
-          <div className="flex items-center gap-3">
-             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-black/20 font-body">Architecture by</span>
-             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-black border-b border-black/20 pb-0.5 font-body">Devansh Arya</span>
-          </div>
+          <div></div>
 
           <div className="flex items-center gap-8 opacity-20 font-body">
             <span className="text-[9px] font-black uppercase tracking-[0.4em]">© 2026 Kin Rituals</span>
