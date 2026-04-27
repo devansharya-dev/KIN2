@@ -103,7 +103,7 @@ export default function HeroSection() {
 
                {/* Right: Technical Versioning */}
                <div className="flex flex-col items-end text-right gap-1">
-                  <span className="text-[8px] font-bold uppercase tracking-[0.6em] opacity-30">Series Ref</span>
+                  
                   <p className="font-heading text-[24px] md:text-[34px] tracking-tighter opacity-80">
                     2026 <span className="font-serif italic opacity-30 text-[0.7em]">v1</span>
                   </p>

@@ -49,9 +49,7 @@ export default function ParallaxSection() {
                 Bio <br /> <span className="opacity-15">Intelligence.</span>
             </h2>
             <div className="relative mt-4 md:mt-0 md:absolute md:top-1/2 right-0 md:right-32 md:-translate-y-1/2 text-right md:text-left">
-                <p className="font-serif italic text-[9vw] sm:text-[10vw] md:text-[8vw] lg:text-[110px] text-white/40 leading-none tracking-tighter">
-                   The Alchemy
-                </p>
+                
             </div>
         </div>
 

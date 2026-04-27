@@ -14,8 +14,10 @@ export default function KinProductSection() {
           {/* Eyebrow */}
           <div className="lg:col-span-3 pt-4">
             <div className="flex items-center gap-2 text-[14px] font-semibold tracking-tight text-[var(--color-text)] uppercase tracking-widest">
-              <span className="w-[18px] h-[18px] bg-[var(--color-primary)] text-[var(--color-surface)] rounded-full flex items-center justify-center text-[14px] leading-none pb-[1px]">
-                +
+              <span className="w-[18px] h-[18px] bg-[var(--color-primary)] text-[var(--color-surface)] rounded-full flex items-center justify-center shrink-0">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 5v14M5 12h14"/>
+                </svg>
               </span>
               The New Ritual
             </div>

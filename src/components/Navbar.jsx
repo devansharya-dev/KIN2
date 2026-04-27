@@ -28,7 +28,7 @@ export default function Navbar() {
           <h1 className="text-[22px] md:text-[24px] font-bold tracking-tighter text-[#0C0C0C] font-['Inter']">
             Kin
           </h1>
-          <span className="text-[10px] font-bold mt-1.5 ml-0.5 text-[#0C0C0C]">®</span>
+         
         </div>
 
         {/* Desktop Nav Items - Just 3 Items */}
