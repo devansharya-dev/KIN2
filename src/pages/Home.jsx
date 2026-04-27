@@ -35,11 +35,15 @@ export default function Home() {
     <div className="page-root w-full overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)] min-h-screen">
       <Navbar />
       <HeroSection />
-      <ProductSection />
-      <ParallaxSection />
-      <GridSection />
-      <CTASection />
-      <Footer />
+      
+      Wrapper to scroll over the fixed HeroSection
+      <div className="relative z-10 bg-[var(--color-bg)] w-full">
+        <ProductSection />
+        <ParallaxSection />
+        <GridSection />
+        <CTASection />
+        <Footer />
+      </div>
     </div>
   );
 }
