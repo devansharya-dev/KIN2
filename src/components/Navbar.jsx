@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -13,10 +15,29 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
+  // Handles anchor links — works from any page
+  const handleAnchorNav = (anchor) => {
+    setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for Home to mount before scrolling
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    } else {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home',    anchor: 'hero' },
+    { name: 'About',   anchor: 'about' },
+    { name: 'Contact', anchor: 'contact' },
   ];
 
   return (
@@ -26,19 +47,22 @@ export default function Navbar() {
           scrolled ? 'top-4 md:top-6' : 'top-0'
         }`}
       >
-        <div 
+        <div
           className={`relative flex items-center justify-between px-6 md:px-10 transition-all duration-700 pointer-events-auto ${
-            scrolled 
-              ? 'h-[64px] md:h-[74px] w-[92%] md:w-[90%] lg:w-[1100px] bg-white/95 backdrop-blur-xl border border-black/10 rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.1)]' 
+            scrolled
+              ? 'h-[64px] md:h-[74px] w-[92%] md:w-[90%] lg:w-[1100px] bg-white/95 backdrop-blur-xl border border-black/10 rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.1)]'
               : 'h-[90px] md:h-[110px] w-full bg-[var(--color-bg)]/80 backdrop-blur-sm border-b border-black/5'
           }`}
         >
-          {/* Brand Logo - KIN (Restored Bold) */}
-          <div className="flex items-center gap-1 cursor-pointer hover:opacity-60 transition-opacity z-[110]">
-            <h1 className="text-[22px] md:text-[26px] font-extrabold tracking-[-0.05em] text-[#0C0C0C] font-heading">
+          {/* Brand Logo */}
+          <button
+            onClick={() => handleAnchorNav('hero')}
+            className="flex items-center gap-1 cursor-pointer hover:opacity-60 transition-opacity z-[110]"
+          >
+            <h2 className="text-[22px] md:text-[26px] font-extrabold tracking-[-0.05em] text-[#0C0C0C] font-heading">
               KIN
-            </h1>
-          </div>
+            </h2>
+          </button>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-2 relative">
@@ -50,50 +74,45 @@ export default function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  style={{
-                    left: hoveredLink.left,
-                    width: hoveredLink.width,
-                  }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  style={{ left: hoveredLink.left, width: hoveredLink.width }}
                 />
               )}
             </AnimatePresence>
 
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                to={`/${link.href}`}
+                onClick={() => handleAnchorNav(link.anchor)}
                 onMouseEnter={(e) => {
                   const bounds = e.currentTarget.getBoundingClientRect();
                   const parentBounds = e.currentTarget.parentElement.getBoundingClientRect();
-                  setHoveredLink({
-                    left: bounds.left - parentBounds.left,
-                    width: bounds.width
-                  });
+                  setHoveredLink({ left: bounds.left - parentBounds.left, width: bounds.width });
                 }}
                 onMouseLeave={() => setHoveredLink(null)}
-                className="relative z-10 px-6 py-2"
+                className="relative z-10 px-6 py-2 cursor-pointer outline-none"
               >
                 <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-[#0C0C0C] font-body">
                   {link.name}
                 </span>
-              </Link>
+              </button>
             ))}
           </div>
 
           {/* Desktop CTA & Hamburger */}
           <div className="flex items-center gap-4 md:gap-6">
-            <Link 
-              to="/partner" 
-              className={`hidden md:inline-flex items-center justify-center px-8 py-3 rounded-full font-body text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 bg-black text-white hover:bg-[var(--color-primary)]`}
+            <Link
+              to="/partner"
+              className="hidden md:inline-flex items-center justify-center px-8 py-3 rounded-full font-body text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 bg-black text-white hover:bg-[var(--color-primary)]"
             >
               Partner
             </Link>
 
             {/* Hamburger Toggle */}
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 outline-none group"
+              aria-label="Toggle menu"
+              className="relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 outline-none"
             >
               <div className={`h-[2px] bg-black transition-all duration-500 ease-in-out ${
                 isOpen ? 'w-6 rotate-45 translate-y-[5px]' : 'w-6'
@@ -106,14 +125,14 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Fullscreen Mobile Menu Reveal */}
+      {/* Fullscreen Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: [0.2, 1, 0.2, 1] }}
+            transition={{ duration: 0.5, ease: [0.2, 1, 0.2, 1] }}
             className="fixed inset-0 bg-[#F2F3EC] z-[90] flex flex-col justify-center items-center"
           >
             <div className="flex flex-col items-center gap-8">
@@ -122,21 +141,20 @@ export default function Navbar() {
                   key={item.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * idx }}
+                  transition={{ delay: 0.08 * idx }}
                 >
-                  <Link
-                    to={`/${item.href}`}
-                    onClick={() => setIsOpen(false)}
-                    className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic"
+                  <button
+                    onClick={() => handleAnchorNav(item.anchor)}
+                    className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic cursor-pointer outline-none"
                   >
                     {item.name}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * navLinks.length }}
+                transition={{ delay: 0.08 * navLinks.length }}
               >
                 <Link
                   to="/partner"
