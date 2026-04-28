@@ -1,7 +1,7 @@
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-[var(--color-bg)] py-16 px-6 md:px-16 border-t border-black/10 overflow-hidden font-body" id="contact">
+    <footer className="relative w-full bg-[var(--color-bg)] py-16 px-6 md:px-16 border-t border-black/10 overflow-x-hidden font-body" id="contact">
       
 
 
@@ -12,12 +12,21 @@ export default function Footer() {
           
           {/* Left: Branding (Capital K) */}
           <div className="lg:col-span-6">
-            <h2 className="font-heading text-[12vw] lg:text-[120px] leading-[0.8] tracking-[-0.06em] text-[#0C0C0C]">
+            <h2 className="font-heading text-[12vw] lg:text-[120px] leading-none tracking-[-0.06em] text-[#0C0C0C]">
               KIN<span className="opacity-10 italic">.</span>
             </h2>
             <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.6em] text-black/20 max-w-[280px]">
-              Molecular Synergy / 2026
+              Functional Mushroom Syrup / 2026
             </p>
+            <div className="mt-12">
+              <a 
+                href="/partner" 
+                className="inline-flex items-center gap-3 bg-[#0C0C0C] text-white px-8 py-4 rounded-full font-body text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-[#1F3D2B] transition-colors duration-500"
+              >
+                Start Your Partnership
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
 
           {/* Right: Contact Info with Icons */}
@@ -64,17 +73,8 @@ export default function Footer() {
         </div>
 
         {/* --- MINIMAL SIGNATURE BAR --- */}
-        <div className="pt-10 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          
-          <div></div>
-
-          <div className="flex items-center gap-8 opacity-20 font-body">
-            <span className="text-[9px] font-black uppercase tracking-[0.4em]">© 2026 Kin Rituals</span>
-            <div className="flex items-center gap-2">
-               <div className="w-1.5 h-1.5 bg-black rounded-full animate-pulse" />
-               <span className="text-[9px] font-black uppercase tracking-[0.4em]">System Synced</span>
-            </div>
-          </div>
+        <div className="pt-10 border-t border-black/5 flex justify-center items-center">
+          <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-20 font-body">© 2026 KIN Beverages</span>
 
         </div>
       </div>

@@ -5,7 +5,7 @@ export default function ParallaxSection() {
   const { ref: contentRef, y: contentY } = useParallax({ speed: 0.04, direction: 'up' });
 
   return (
-    <section className="relative w-full h-[150vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a] font-body">
+    <section className="relative w-full h-[100vh] md:h-[150vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a] font-body">
       
 
 
@@ -33,19 +33,16 @@ export default function ParallaxSection() {
         
         {/* Top Info Bar */}
         <div className="flex items-center gap-4 md:gap-10 mb-16 md:mb-24 opacity-30">
-            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.5em] md:tracking-[0.8em] uppercase text-white">Molecular Series</span>
+            <span className="text-[8px] md:text-[10px] font-bold tracking-[0.5em] md:tracking-[0.8em] uppercase text-white">The Botanical Edge</span>
             <div className="h-[1px] flex-grow bg-white/20" />
             
         </div>
 
         {/* MASSIVE NEW HEADLINE */}
         <div className="relative mb-20 md:mb-32">
-            <h2 className="font-heading text-[11vw] sm:text-[12vw] md:text-[15vw] lg:text-[200px] leading-[0.85] md:leading-[0.8] tracking-[-0.05em] md:tracking-[-0.08em] text-white lowercase">
-                Bio <br /> <span className="opacity-15">Intelligence.</span>
+            <h2 className="font-heading text-[11vw] sm:text-[12vw] md:text-[15vw] lg:text-[200px] tracking-[-0.05em] md:tracking-[-0.08em] text-white lowercase">
+                Built <br /> <span className="opacity-30">For Volume.</span>
             </h2>
-            <div className="relative mt-4 md:mt-0 md:absolute md:top-1/2 right-0 md:right-32 md:-translate-y-1/2 text-right md:text-left">
-                
-            </div>
         </div>
 
         {/* BOTTOM SECTION: ASYMMETRIC GRID */}
@@ -53,9 +50,9 @@ export default function ParallaxSection() {
             
             {/* Left: Premium Statement */}
             <div className="md:col-span-7 lg:col-span-6">
-                <h3 className="font-serif text-[28px] sm:text-[32px] md:text-[45px] lg:text-[54px] text-white leading-[1.2] md:leading-[1.1] italic">
-                   “Translating the <span className="not-italic font-heading text-white/30 lowercase text-[0.8em]">silent logic</span> of shiitake into 
-                   <span className="text-white"> liquid focus.</span>”
+                <h3 className="font-serif text-[24px] sm:text-[32px] md:text-[45px] lg:text-[54px] text-white leading-[1.2] md:leading-[1.1] italic">
+                   “One bottle replaces <span className="not-italic font-heading text-white/30 lowercase text-[0.8em]">4 ready-to-drinks</span>. Your staff pours in 
+                   <span className="text-white"> 10 seconds.</span>”
                 </h3>
             </div>
 
@@ -65,10 +62,16 @@ export default function ParallaxSection() {
                     <div className="w-1 h-1 bg-white animate-pulse" />
                 </div>
                 <p className="font-body text-[11px] md:text-[13px] leading-relaxed text-white/40 uppercase tracking-[0.2em] mb-3 md:mb-4">
-                   Methodology
+                   Our Process
+                </p>
+                <p className="font-body text-[14px] md:text-[15px] leading-relaxed text-white/60 font-light mb-8">
+                   Our blend preserves the integrity of every functional botanical. Pure ingredients, designed for a mindful lift.
+                </p>
+                <p className="font-body text-[11px] md:text-[13px] leading-relaxed text-white/40 uppercase tracking-[0.2em] mb-3 md:mb-4">
+                   The Umami Advantage
                 </p>
                 <p className="font-body text-[14px] md:text-[15px] leading-relaxed text-white/60 font-light">
-                   A triple-extraction process designed to preserve the functional integrity of every molecule. No noise, just ritual.
+                   Shiitake's natural umami stimulates appetite, driving food orders and increasing average spend per table.
                 </p>
             </div>
 
@@ -76,11 +79,7 @@ export default function ParallaxSection() {
 
       </div>
 
-      {/* --- DECORATIVE ACCENTS --- */}
-      <div className="absolute bottom-12 md:bottom-20 left-6 md:left-24 opacity-10 flex items-center gap-4 md:gap-6">
-          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full border border-white" />
-          <span className="text-[8px] md:text-[10px] font-bold tracking-[0.3em] md:tracking-[0.5em] uppercase text-white">Stabilized Formula</span>
-      </div>
+
 
     </section>
   );

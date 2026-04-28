@@ -40,7 +40,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[140vh] w-full bg-[#f4f4f2] overflow-hidden font-body">
+    <section id="hero" className="relative min-h-[110vh] md:min-h-[140vh] w-full bg-[#f4f4f2] overflow-hidden font-body">
       
 
       
@@ -69,47 +69,48 @@ export default function HeroSection() {
             <div className="flex flex-col items-center text-center">
               {/* Minimal Top Label */}
               <span className="text-[9px] tracking-[1.5em] uppercase opacity-40 mb-6 font-light">
-                Molecular Synergy
+                Functional Mushroom Syrup
               </span>
 
               {/* Distilled Logo */}
               <div className="relative">
-                <h1 className="font-heading text-[22vw] md:text-[180px] tracking-[-0.08em] leading-[0.75] flex items-center drop-shadow-xl">
+                <h1 className="font-heading text-[22vw] md:text-[180px] tracking-[-0.08em] flex items-center drop-shadow-xl">
                   KIN<span className="text-[0.35em] font-serif italic lowercase opacity-30 tracking-tight ml-2">ship.</span>
                 </h1>
               </div>
 
-              {/* Shortest Tagline */}
+              {/* Primary Tagline */}
               <p className="mt-8 font-serif italic text-[18px] md:text-[22px] opacity-70 tracking-wide drop-shadow-md">
-                "Liquid Ritual."
+                "All bliss, no booze."
               </p>
+
+              {/* Hero CTA */}
+              <a 
+                href="/partner" 
+                className="mt-10 inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-body text-[11px] md:text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white/20 transition-all duration-500"
+              >
+                Request a Free Sample
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
 
-            {/* BOTTOM INFO: SLEEK & LIGHTWEIGHT */}
-            <div className="absolute bottom-12 md:bottom-20 w-full max-w-[1400px] flex flex-col md:flex-row justify-between items-end px-10 gap-10">
-               
-               {/* Left: Distilled Narrative */}
-               <div className="flex flex-col gap-4 max-w-[320px]">
+            {/* BOTTOM INFO */}
+            <div className="absolute bottom-8 md:bottom-20 w-full flex justify-center px-6">
+               <div className="flex flex-col items-center gap-4 max-w-[320px] text-center">
                   <div className="w-8 h-px bg-white/30" />
-                  <p className="text-[13px] leading-[1.6] text-white/60 font-body uppercase tracking-[0.3em] font-light">
-                    Stripping noise to leave <br/> only the essential.
+                  <p className="text-[11px] md:text-[13px] leading-[1.6] text-white/60 font-body uppercase tracking-[0.3em] font-light">
+                    Crafted for bars, lounges <br/> & modern hospitality.
                   </p>
                </div>
 
-               {/* Right: Technical Versioning */}
-               <div className="flex flex-col items-end text-right gap-1">
-                  
-                  <p className="font-heading text-[24px] md:text-[34px] tracking-tighter opacity-80">
-                    2026 <span className="font-serif italic opacity-30 text-[0.7em]">v1</span>
-                  </p>
-               </div>
+
             </div>
 
           </div>
         </div>
       </div>
 
-      <div className="h-[140vh] pointer-events-none" />
+      <div className="h-[110vh] md:h-[140vh] pointer-events-none" />
     </section>
   );
 }

@@ -22,7 +22,7 @@ export default function CTASection() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-[160vh] bg-[var(--color-bg)] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[120vh] md:h-[160vh] bg-[var(--color-bg)] flex items-center justify-center overflow-hidden"
     >
       
 
@@ -59,11 +59,7 @@ export default function CTASection() {
             {/* Soft Shadow for Grounding */}
             <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[60%] h-5 bg-black/20 blur-3xl rounded-full scale-x-150 z-0" />
             
-            {/* Top Micro-Metadata */}
-            <div className="absolute top-6 left-6 md:top-10 md:left-14 flex flex-col sm:flex-row gap-2 sm:gap-10 opacity-20 font-body text-[10px] font-bold uppercase tracking-widest">
-                <span>Ref. No. 2026_D</span>
-                <span>Organic Extract</span>
-            </div>
+
         </div>
       </motion.div>
 
@@ -73,27 +69,29 @@ export default function CTASection() {
         <div className="mt-[60vh] md:mt-[75vh]">
           <motion.h2 
             style={{ x: zestX }}
-            className="font-heading text-[20vw] lg:text-[280px] font-extrabold text-[#0C0C0C] lowercase leading-none tracking-tighter"
+            className="font-heading text-[16vw] lg:text-[280px] font-extrabold text-[#0C0C0C] lowercase tracking-tighter"
           >
             <span className="text-outline-dark italic">zest.</span>
           </motion.h2>
           
           <div className="mt-10 max-w-[900px] mx-auto">
-              <p className="font-serif text-[28px] md:text-[45px] lg:text-[56px] text-[#0C0C0C]/90 leading-[1.1] italic">
+              <p className="font-serif text-[24px] md:text-[45px] lg:text-[56px] text-[#0C0C0C]/90 leading-[1.1] italic">
                 A mindful ritual for the <br /> 
-                <span className="font-medium">high-frequency</span> soul
+                <span className="font-medium">modern</span> soul
               </p>
               
-              {/* Bottom Details Grid */}
-              <div className="mt-16 flex justify-center gap-8 md:gap-24 font-body opacity-30">
-                  <div className="text-left border-l border-black pl-6">
-                      <p className="text-[10px] font-bold uppercase tracking-widest mb-1">Terroir</p>
-                      <p className="text-[14px] font-medium uppercase tracking-tighter">Sicily, Italy</p>
-                  </div>
-                  <div className="text-right border-r border-black pr-6">
-                      <p className="text-[10px] font-bold uppercase tracking-widest mb-1">Essence</p>
-                      <p className="text-[14px] font-medium uppercase tracking-tighter">Sun-Drenched Citrus</p>
-                  </div>
+              {/* CTA Button */}
+              <div className="mt-16 flex justify-center pointer-events-auto">
+                  <a href="/partner" className="inline-flex items-center gap-3 bg-[#0C0C0C] text-white px-10 py-5 rounded-full font-body text-[13px] font-bold uppercase tracking-[0.3em] hover:bg-[#1F3D2B] transition-colors duration-500">
+                      Request Samples
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+              </div>
+              <div className="mt-8 flex justify-center items-center gap-3">
+                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] animate-pulse" />
+                 <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.3em] text-black/30">
+                    Now onboarding partners in select cities — Limited pilot slots available
+                 </span>
               </div>
           </div>
         </div>
