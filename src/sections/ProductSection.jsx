@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import useParallax from '../hooks/useParallax';
 
 export default function KinProductSection() {
@@ -37,9 +39,9 @@ export default function KinProductSection() {
           
           {/* LEFT: Drink Bottle Image (Parallax) */}
           <div className="lg:col-span-5 relative" ref={imgRef}>
-            <div 
-              style={{ transform: `translateY(${imgY}px) scale(${imgScale})` }}
-              className="rounded-[40px] overflow-hidden bg-[var(--color-surface)] aspect-[4/5] relative w-full max-w-[500px] mx-auto lg:mx-0 shadow-2xl transition-transform duration-300"
+            <motion.div 
+              style={{ y: imgY, scale: imgScale }}
+              className="rounded-[40px] overflow-hidden bg-[var(--color-surface)] aspect-[4/5] relative w-full max-w-[500px] mx-auto lg:mx-0 shadow-2xl"
             >
 
               <img 
@@ -112,10 +114,10 @@ export default function KinProductSection() {
 
             {/* Secondary CTA */}
             <div className="mt-12 flex justify-center">
-              <a href="/partner" className="inline-flex items-center gap-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-4 rounded-full font-body text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-[var(--color-primary)] hover:text-white transition-all duration-500">
+              <Link to="/partner" className="inline-flex items-center gap-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] px-8 py-4 rounded-full font-body text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-[var(--color-primary)] hover:text-white transition-all duration-500">
                 Partner With Us
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </Link>
             </div>
           </div>
 

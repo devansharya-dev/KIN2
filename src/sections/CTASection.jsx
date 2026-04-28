@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 export default function CTASection() {
@@ -82,10 +83,10 @@ export default function CTASection() {
               
               {/* CTA Button */}
               <div className="mt-16 flex justify-center pointer-events-auto">
-                  <a href="/partner" className="inline-flex items-center gap-3 bg-[#0C0C0C] text-white px-10 py-5 rounded-full font-body text-[13px] font-bold uppercase tracking-[0.3em] hover:bg-[#1F3D2B] transition-colors duration-500">
+                  <Link to="/partner" className="inline-flex items-center gap-3 bg-[#0C0C0C] text-white px-10 py-5 rounded-full font-body text-[13px] font-bold uppercase tracking-[0.3em] hover:bg-[#1F3D2B] transition-colors duration-500">
                       Request Samples
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </a>
+                  </Link>
               </div>
               <div className="mt-8 flex justify-center items-center gap-3">
                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] animate-pulse" />

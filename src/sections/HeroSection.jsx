@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -12,6 +13,12 @@ export default function HeroSection() {
     let rafId;
     const updateScroll = () => {
       const scrollY = window.scrollY;
+      
+      // Stop calculations if we've scrolled past the hero
+      if (scrollY > window.innerHeight * 1.5) {
+        rafId = requestAnimationFrame(updateScroll);
+        return;
+      }
       
       if (scrollWrapperRef.current) {
         const scale = Math.max(0.94, 1 - scrollY * 0.0003);
@@ -47,7 +54,7 @@ export default function HeroSection() {
       <div 
         ref={scrollWrapperRef}
         className="fixed top-0 left-0 w-full h-[100dvh] p-4 md:p-6 z-0 origin-center transition-opacity duration-1000"
-        style={{ opacity: loaded ? 1 : 0 }}
+        style={{ opacity: loaded ? 1 : 0, willChange: 'transform' }}
       >
         <div className="relative w-full h-full overflow-hidden rounded-[30px] md:rounded-[50px] bg-black shadow-2xl">
           
@@ -58,13 +65,14 @@ export default function HeroSection() {
               src="/images/g.jpeg" 
               alt="Hero Background" 
               className="w-full h-full object-cover object-right md:object-center brightness-[0.75] contrast-[1.1]"
+              style={{ willChange: 'transform' }}
             />
             {/* Subtle Gradient Veil */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
           </div>
 
           {/* CONTENT OVERLAY */}
-          <div ref={overlayRef} className="relative z-10 h-full flex flex-col justify-center items-center text-white px-6">
+          <div ref={overlayRef} className="relative z-10 h-full flex flex-col justify-center items-center text-white px-6" style={{ willChange: 'transform, opacity' }}>
             
             <div className="flex flex-col items-center text-center">
               {/* Minimal Top Label */}
@@ -85,13 +93,13 @@ export default function HeroSection() {
               </p>
 
               {/* Hero CTA */}
-              <a 
-                href="/partner" 
+              <Link 
+                to="/partner" 
                 className="mt-10 inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-body text-[11px] md:text-[12px] font-bold uppercase tracking-[0.3em] hover:bg-white/20 transition-all duration-500"
               >
                 Request a Free Sample
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </Link>
             </div>
 
             {/* BOTTOM INFO */}

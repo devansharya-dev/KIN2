@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -59,9 +60,9 @@ export default function Navbar() {
             </AnimatePresence>
 
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={`/${link.href}`}
                 onMouseEnter={(e) => {
                   const bounds = e.currentTarget.getBoundingClientRect();
                   const parentBounds = e.currentTarget.parentElement.getBoundingClientRect();
@@ -76,18 +77,18 @@ export default function Navbar() {
                 <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-[#0C0C0C] font-body">
                   {link.name}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Desktop CTA & Hamburger */}
           <div className="flex items-center gap-4 md:gap-6">
-            <a 
-              href="/partner" 
+            <Link 
+              to="/partner" 
               className={`hidden md:inline-flex items-center justify-center px-8 py-3 rounded-full font-body text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 bg-black text-white hover:bg-[var(--color-primary)]`}
             >
               Partner
-            </a>
+            </Link>
 
             {/* Hamburger Toggle */}
             <button 
@@ -117,28 +118,34 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center gap-8">
               {navLinks.map((item, idx) => (
-                <motion.a
+                <motion.div
                   key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * idx }}
-                  className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic"
                 >
-                  {item.name}
-                </motion.a>
+                  <Link
+                    to={`/${item.href}`}
+                    onClick={() => setIsOpen(false)}
+                    className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
-              <motion.a
-                href="/partner"
-                onClick={() => setIsOpen(false)}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * navLinks.length }}
-                className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-[var(--color-primary)] transition-all duration-500 hover:italic mt-4"
               >
-                Partner With Us
-              </motion.a>
+                <Link
+                  to="/partner"
+                  onClick={() => setIsOpen(false)}
+                  className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-[var(--color-primary)] transition-all duration-500 hover:italic mt-4 block"
+                >
+                  Partner With Us
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

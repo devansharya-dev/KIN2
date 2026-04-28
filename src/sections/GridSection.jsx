@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 const ingredients = [
   {
@@ -95,15 +95,15 @@ export default function IngredientsSection() {
       
       {/* Ingredient Section CTA */}
       <div className="mt-20 flex justify-center">
-        <a 
-          href="/partner" 
+        <Link 
+          to="/partner" 
           className="group flex items-center gap-4 text-[14px] md:text-[16px] font-serif italic text-black/40 hover:text-black transition-colors duration-500"
         >
           Curious about the taste?
           <span className="not-italic font-body text-[11px] font-bold uppercase tracking-[0.3em] border-b border-black/10 group-hover:border-black transition-all">
              Request a sample →
           </span>
-        </a>
+        </Link>
       </div>
 
     </section>

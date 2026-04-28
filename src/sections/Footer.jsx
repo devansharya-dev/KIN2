@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -19,13 +20,13 @@ export default function Footer() {
               Functional Mushroom Syrup / 2026
             </p>
             <div className="mt-12">
-              <a 
-                href="/partner" 
+              <Link 
+                to="/partner" 
                 className="inline-flex items-center gap-3 bg-[#0C0C0C] text-white px-8 py-4 rounded-full font-body text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-[#1F3D2B] transition-colors duration-500"
               >
                 Start Your Partnership
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </Link>
             </div>
           </div>
 

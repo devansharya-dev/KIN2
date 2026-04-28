@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import useParallax from '../hooks/useParallax';
 
 export default function ParallaxSection() {
@@ -9,11 +10,11 @@ export default function ParallaxSection() {
       
 
 
-      {/* --- BACKGROUND (Images Same) --- */}
+      {/* --- BACKGROUND --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden" ref={bgRef}>
-        <div 
+        <motion.div 
           className="relative w-full h-[130%] -top-[15%]"
-          style={{ transform: `translateY(${bgY}px) scale(${bgScale})` }}
+          style={{ y: bgY, scale: bgScale }}
         >
           <img
             src="/images/parallax/botanicals.png" 
@@ -21,14 +22,14 @@ export default function ParallaxSection() {
             className="w-full h-full object-cover opacity-30 grayscale-[60%] contrast-[1.4]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
-        </div>
+        </motion.div>
       </div>
 
       {/* --- NEW CONTENT DESIGN --- */}
-      <div
+      <motion.div
         className="relative z-10 w-full max-w-[1600px] h-full flex flex-col justify-center px-6 md:px-24"
         ref={contentRef}
-        style={{ transform: `translateY(${contentY}px)` }}
+        style={{ y: contentY }}
       >
         
         {/* Top Info Bar */}

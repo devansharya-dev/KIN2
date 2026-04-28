@@ -29,6 +29,8 @@ const recipes = [
   },
 ];
 
+import { Link } from 'react-router-dom';
+
 export default function RecipeSection() {
   return (
     <section className="w-full bg-[var(--color-bg)] py-16 md:py-40 px-6 md:px-12 lg:px-20 font-body overflow-x-hidden">
@@ -94,13 +96,13 @@ export default function RecipeSection() {
         <p className="text-[14px] md:text-[18px] font-serif italic text-black/40 mb-8 max-w-[500px]">
           Want the complete KIN mixology guide for your bar team?
         </p>
-        <a 
-          href="/partner" 
+        <Link 
+          to="/partner" 
           className="inline-flex items-center gap-3 border-2 border-black text-black px-8 py-4 rounded-full font-body text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all duration-500"
         >
           Get the Full Recipe Guide + Samples
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        </Link>
       </div>
 
     </section>
