@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../sections/FAQSection';
 
 export default function Partner() {
   useEffect(() => {
@@ -130,6 +131,9 @@ export default function Partner() {
 
         </div>
       </section>
+
+      {/* --- FAQ --- */}
+      <FAQSection />
 
       {/* --- FOUNDER'S NOTE --- */}
       <section className="py-24 px-6 md:px-20 max-w-[800px] mx-auto text-center border-t border-black/5">
