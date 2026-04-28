@@ -66,45 +66,45 @@ export default function KinProductSection() {
             <div className="grid grid-cols-2 gap-2 w-full bg-[var(--color-surface)] border border-[var(--color-surface)] rounded-[36px] overflow-hidden">
               
               {/* Stat 01: Yield */}
-              <div className="bg-[var(--color-bg)] p-6 md:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[260px] relative">
-                <span className="text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest">Yield</span>
-                <div>
-                  <span className="text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">4x</span>
+              <div className="bg-[var(--color-bg)] p-5 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-[260px] relative">
+                <span className="text-[9px] md:text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest text-right">Yield</span>
+                <div className="mt-4 md:mt-0">
+                  <span className="text-[42px] sm:text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">4x</span>
                 </div>
-                <p className="text-[13px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
+                <p className="text-[12px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
                   Servings per bottle vs. ready-to-drink alternatives.
                 </p>
               </div>
 
               {/* Stat 02: Cost Savings */}
-              <div className="bg-[var(--color-bg)] p-6 md:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[260px] relative">
-                <span className="text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest">Savings</span>
-                <div>
-                  <span className="text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)] italic">65%</span>
+              <div className="bg-[var(--color-bg)] p-5 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-[260px] relative">
+                <span className="text-[9px] md:text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest text-right">Savings</span>
+                <div className="mt-4 md:mt-0">
+                  <span className="text-[42px] sm:text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">65%</span>
                 </div>
-                <p className="text-[13px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
+                <p className="text-[12px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
                   Cheaper per serve. Higher margins for your business.
                 </p>
               </div>
 
               {/* Stat 03: Storage */}
-              <div className="bg-[var(--color-bg)] p-6 md:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[260px] relative">
-                <span className="text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest">Storage</span>
-                <div>
-                  <span className="text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">75%</span>
+              <div className="bg-[var(--color-bg)] p-5 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-[260px] relative">
+                <span className="text-[9px] md:text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest text-right">Storage</span>
+                <div className="mt-4 md:mt-0">
+                  <span className="text-[42px] sm:text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">75%</span>
                 </div>
-                <p className="text-[13px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
+                <p className="text-[12px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
                   Less fridge and warehouse space needed.
                 </p>
               </div>
 
               {/* Stat 04: Dilution Ratio */}
-              <div className="bg-[var(--color-bg)] p-6 md:p-10 flex flex-col justify-between min-h-[220px] md:min-h-[260px] relative">
-                <span className="text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest">Ratio</span>
-                <div>
-                  <span className="text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">1:3</span>
+              <div className="bg-[var(--color-bg)] p-5 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-[260px] relative">
+                <span className="text-[9px] md:text-[10px] font-bold text-[var(--color-text-muted)] absolute top-5 right-5 md:top-7 md:right-8 uppercase tracking-widest text-right">Ratio</span>
+                <div className="mt-4 md:mt-0">
+                  <span className="text-[42px] sm:text-[52px] md:text-[72px] font-semibold tracking-tighter leading-none text-[var(--color-primary)]">1:3</span>
                 </div>
-                <p className="text-[13px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
+                <p className="text-[12px] md:text-[14px] text-[var(--color-text-muted)] font-medium leading-tight mt-4 max-w-[160px]">
                   Recommended dilution. Adjustable to your venue's signature taste.
                 </p>
               </div>

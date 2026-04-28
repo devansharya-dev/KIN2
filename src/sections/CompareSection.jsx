@@ -7,7 +7,7 @@ const compareData = [
   { feature: 'Prep Time', kin: '~10 seconds', rtd: 'Ready', mixer: '30–60 seconds' },
   { feature: 'Customization', kin: 'Full (ratio adjustable)', rtd: 'None', mixer: 'Limited' },
   { feature: 'Functional Botanicals', kin: '✓ Shiitake, Ginger, Lemon', rtd: '✗', mixer: '✗' },
-  { feature: 'Shelf Life', kin: '6+ months sealed', rtd: '6–12 months', mixer: 'Varies' },
+  { feature: 'Shelf Life', kin: '45 days for now', rtd: '6–12 months', mixer: 'Varies' },
 ];
 
 export default function CompareSection() {
@@ -38,9 +38,9 @@ export default function CompareSection() {
               {compareData.map((row, idx) => (
                 <tr key={row.feature} className={`border-b border-black/[0.04] ${idx % 2 === 0 ? 'bg-transparent' : 'bg-black/[0.01]'}`}>
                   <td className="p-5 md:p-8 text-[13px] md:text-[15px] font-semibold text-black/70">{row.feature}</td>
-                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] font-bold text-[var(--color-primary)] bg-[var(--color-primary)]/[0.04]">{row.kin}</td>
-                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] text-black/40">{row.rtd}</td>
-                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] text-black/40">{row.mixer}</td>
+                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] font-bold text-[var(--color-primary)] bg-[var(--color-primary)]/[0.04] whitespace-nowrap">{row.kin}</td>
+                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] text-black/40 whitespace-nowrap">{row.rtd}</td>
+                  <td className="p-5 md:p-8 text-[13px] md:text-[15px] text-black/40 whitespace-nowrap">{row.mixer}</td>
                 </tr>
               ))}
             </tbody>

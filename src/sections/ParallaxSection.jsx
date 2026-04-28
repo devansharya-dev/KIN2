@@ -25,9 +25,9 @@ export default function ParallaxSection() {
         </motion.div>
       </div>
 
-      {/* --- NEW CONTENT DESIGN --- */}
+      {/* --- CONTENT --- */}
       <motion.div
-        className="relative z-10 w-full max-w-[1600px] h-full flex flex-col justify-center px-6 md:px-24"
+        className="relative z-10 w-full max-w-[1400px] h-full flex flex-col justify-center px-6 md:px-16 lg:px-20"
         ref={contentRef}
         style={{ y: contentY }}
       >
@@ -36,32 +36,28 @@ export default function ParallaxSection() {
         <div className="flex items-center gap-4 md:gap-10 mb-16 md:mb-24 opacity-30">
             <span className="text-[8px] md:text-[10px] font-bold tracking-[0.5em] md:tracking-[0.8em] uppercase text-white">The Botanical Edge</span>
             <div className="h-[1px] flex-grow bg-white/20" />
-            
         </div>
 
-        {/* MASSIVE NEW HEADLINE */}
+        {/* HEADLINE */}
         <div className="relative mb-20 md:mb-32">
-            <h2 className="font-heading text-[11vw] sm:text-[12vw] md:text-[15vw] lg:text-[200px] tracking-[-0.05em] md:tracking-[-0.08em] text-white lowercase">
+            <h2 className="font-heading text-[11vw] sm:text-[12vw] md:text-[15vw] lg:text-[180px] tracking-[-0.05em] md:tracking-[-0.08em] text-white lowercase">
                 Built <br /> <span className="opacity-30">For Volume.</span>
             </h2>
         </div>
 
-        {/* BOTTOM SECTION: ASYMMETRIC GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mt-10">
+        {/* BOTTOM SECTION: GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mt-10">
             
             {/* Left: Premium Statement */}
-            <div className="md:col-span-7 lg:col-span-6">
-                <h3 className="font-serif text-[24px] sm:text-[32px] md:text-[45px] lg:text-[54px] text-white leading-[1.2] md:leading-[1.1] italic">
-                   “One bottle replaces <span className="not-italic font-heading text-white/30 lowercase text-[0.8em]">4 ready-to-drinks</span>. Your staff pours in 
-                   <span className="text-white"> 10 seconds.</span>”
+            <div>
+                <h3 className="font-serif text-[24px] sm:text-[32px] md:text-[40px] lg:text-[50px] text-white leading-[1.2] md:leading-[1.15] italic">
+                   "One bottle replaces <span className="not-italic font-heading text-white/30 lowercase text-[0.8em]">4 ready-to-drinks</span>. Your staff pours in 
+                   <span className="text-white"> 10 seconds.</span>"
                 </h3>
             </div>
 
             {/* Right: Technical Detail */}
-            <div className="md:col-start-9 md:col-span-4 lg:col-start-10 lg:col-span-3 flex flex-col justify-end mt-8 md:mt-0">
-                <div className="mb-6 md:mb-8 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center">
-                    <div className="w-1 h-1 bg-white animate-pulse" />
-                </div>
+            <div className="flex flex-col justify-center">
                 <p className="font-body text-[11px] md:text-[13px] leading-relaxed text-white/40 uppercase tracking-[0.2em] mb-3 md:mb-4">
                    Our Process
                 </p>
