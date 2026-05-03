@@ -131,7 +131,7 @@ export default function Navbar() {
                   <Link
                     to={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic cursor-pointer outline-none"
+                    className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-black transition-all duration-500 hover:italic cursor-pointer outline-none block text-center"
                   >
                     {item.name}
                   </Link>
@@ -145,7 +145,7 @@ export default function Navbar() {
                 <Link
                   to="/partner"
                   onClick={() => setIsOpen(false)}
-                  className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-[var(--color-primary)] transition-all duration-500 hover:italic mt-4 block"
+                  className="font-heading text-[42px] md:text-[80px] font-bold tracking-tighter text-[var(--color-primary)] transition-all duration-500 hover:italic mt-4 block text-center"
                 >
                   Partner With Us
                 </Link>
